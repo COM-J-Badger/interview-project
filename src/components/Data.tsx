@@ -21,9 +21,9 @@ function Data() {
         return () => { mounted = false; }
     }, []);
 
-    let tasks: number = 0;
     let problems: number = 0;
-    let issues: number = 0;
+    let questions: number = 0;
+    let tasks: number = 0;
 
     let high : number = 0;
     let medium : number = 0;
@@ -34,12 +34,12 @@ function Data() {
     data?.results.forEach(count)
 
     function count(item: { type: string, priority: string, status: string }) {
-        if (item.type === 'task') {
-            tasks++;
-        } else if (item.type === 'problem') {
+        if (item.type === 'problem') {
             problems++;
-        } else if (item.type === 'issue') {
-            issues++;
+        } else if (item.type === 'question') {
+            questions++;
+        } else if (item.type === 'task') {
+            tasks++;
         }
 
         if (item.priority === 'high') {
@@ -72,8 +72,8 @@ function Data() {
     return (
         <div className='border p-4'>
             <pre className='text-sm'> Back-End Task 1:</pre>
-            <pre className='text-sm'> Tasks = {tasks}, Problems = {problems}, Issues = {issues}</pre>
-            <pre className='text-sm'> Tasks = {((tasks/500) * 100).toFixed(2)}%, Problems = {((problems/500) * 100).toFixed(2)}%, Issues = {((issues/500) * 100).toFixed(2)}%</pre>
+            <pre className='text-sm'> Problems = {problems}, Questions = {questions}, Tasks = {tasks}</pre>
+            <pre className='text-sm'> Problems = {((problems/500) * 100).toFixed(2)}%, Questions = {((questions/500) * 100).toFixed(2)}%, Tasks = {((tasks/500) * 100).toFixed(2)}%</pre>
             <br></br>
             <pre className='text-sm'> Back-End Task 2:</pre>
             <pre className='text-sm'> High = {high}, Medium = {medium}, Low = {low}</pre>
