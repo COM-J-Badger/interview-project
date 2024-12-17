@@ -1,6 +1,5 @@
 import { SampleData } from "api/types";
 import axios from 'axios';
-//import e from "express";
 import { useEffect, useState } from "react";
 
 function Data() {
@@ -20,7 +19,7 @@ function Data() {
         fetchData();
 
         return () => { mounted = false; }
-    }, [])
+    }, []);
 
     let tasks: number = 0;
     let problems: number = 0;
@@ -30,9 +29,11 @@ function Data() {
     let medium : number = 0;
     let low : number = 0;
 
+    //let time : number = 0;
+
     data?.results.forEach(count)
 
-    function count(item: { type: string, priority: string }) {
+    function count(item: { type: string, priority: string, status: string }) {
         if (item.type === 'task') {
             tasks++;
         } else if (item.type === 'problem') {
@@ -52,6 +53,17 @@ function Data() {
         }
     }
 
+    // task3?.results.forEach(getAvgTime)
+
+    // function getAvgTime(item: { created: string, updated: string}) {
+    //     const created = new Date(item.created);
+    //     const updated = new Date(item.updated);
+
+    //     const diff = updated.getTime() - created.getTime();
+
+    //     time += diff;
+    // }
+
 
     if (!data) {
         return 'loading data...';
@@ -66,6 +78,7 @@ function Data() {
             <pre className='text-sm'> Back-End Task 2:</pre>
             <pre className='text-sm'> High = {high}, Medium = {medium}, Low = {low}</pre>
             <pre className='text-sm'> High = {((high/500) * 100).toFixed(2)}%, Medium = {((medium/500) * 100).toFixed(2)}%, Low = {((low/500) * 100).toFixed(2)}%</pre>
+
         </div>
     )
 
