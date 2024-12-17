@@ -9,11 +9,37 @@ function Data() {
      * Gets the data.
      * Hint: consider using the react-query library that is ready to go!
      * */
+    // useEffect(() => {
+    //     let mounted = true;
+
+    //     const fetchData = async () => {
+    //         const { data: allData } = await axios.get<SampleData>('/api/task1');
+
+    //         if (mounted) {
+    //             setData(allData)
+    //         }
+    //     }
+
+    //     fetchData();
+
+    //     return () => { mounted = false; }
+    // }, [])
+
+    // if (!data) {
+    //     return 'loading data...';
+    // }
+
+    // return (
+    //     <div className='border p-4'>
+    //         <pre className='text-sm'>{JSON.stringify(data, null, 2)}</pre>
+    //     </div>
+    // )
+
     useEffect(() => {
         let mounted = true;
 
         const fetchData = async () => {
-            const { data: allData } = await axios.get<SampleData>('/api/data');
+            const { data: allData } = await axios.get<SampleData>('/api/task1');
 
             if (mounted) {
                 setData(allData)
@@ -31,9 +57,10 @@ function Data() {
 
     return (
         <div className='border p-4'>
-            <pre className='text-sm'>{JSON.stringify(data, null, 2)}</pre>
+            <pre className='text-sm'> Task 1: {JSON.stringify(data, null, 2)}</pre>
         </div>
     )
+
 }
 
 export default Data
